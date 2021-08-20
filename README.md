@@ -1,4 +1,4 @@
-#BayesPermus
+# BayesPermus
 
 Bayesian inference of algorithm performance using permutation models.
 
