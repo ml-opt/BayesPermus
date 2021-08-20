@@ -22,7 +22,7 @@ permus = np.array([[1,2,3], [1,3,2]])
 from BayesPermus.models.BradleyTerry import BradleyTerry
 
 # BT Dirichlet hyper-priors
- dirichlet_alpha_bt = num_algorithms * [1]
+dirichlet_alpha_bt = [1, 1, 1]
 
 
 bradleyTerry = BradleyTerry(dirichlet_alpha_bt, num_samples=1000)
