@@ -5,7 +5,7 @@ Bayesian inference of algorithm performance using permutation models.
 ## Installation
 
 ```
-	pip install BayesPermus
+pip install BayesPermus
 ```
 
 ## Usage
@@ -30,6 +30,23 @@ bradleyTerry = BradleyTerry(dirichlet_alpha_bt, num_samples=1000)
 # Calculate the marginal probabilities
 probs = bradleyTerry.calculate_top_ranking_probs(permus)
 
+```
+
+## Additional available models
+
+* Bradley-Terry:
+```python
+from BayesPermus.models.BradleyTerry import BradleyTerry
+```
+* Plackett-Luce:
+```python
+from BayesPermus.models.PlackettLuce import PlackettLuceDirichlet
+from BayesPermus.models.PlackettLuce import PlackettLuceGamma
+```
+
+* Mallows Model:
+```python
+from BayesPermus.models.MallowsModel import MallowsModel
 ```
 
 ## Additional available marginals
