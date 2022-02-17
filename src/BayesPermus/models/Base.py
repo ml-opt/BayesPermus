@@ -5,16 +5,42 @@ import itertools
 import pystan
 
 class Base:
+  """Base class for the different Bayesian models on permutation spaces.
+  This class handles the steps of performing Bayesian inference using pystan
+  and sampling from the posterior distributions.
+
+  In addition, this class provides naive implementations of the different posterior
+  summaries. However, without additional information on the particular model,
+  such posterior summaries are in general factorial in the numer of algorithms being
+  compared. Therefore, whenever possible, derived classes should override the
+  base implementations.
+  """
+
   def __init__(self, stan_model=None, seed=1, num_chains=1, num_samples=2000):
+    """ Constructor of the Base class.
+
+    Parameters:
+    -----------
+
+    stan_model : string 
+      Filename of the stan code for this particular model. Leave None in case no Stan
+      model is used.
+
+    seed : integer
+      Random seed passed to Stan during posterior sampling.
+
+    num_chains : integer
+      Number of Monte Carlo chains to be performed during inference.
+
+    num_samples : integer
+      Number of posterior samples.
+    """
     self.seed = seed
     self.num_chains = num_chains
     self.num_samples = num_samples
     
     if stan_model != None:
-      path = os.path.abspath(os.path.dirname(__file__))
-      path = os.path.join(path, stan_model)
-      self.code = open(path).read()
-      self.posterior = pystan.StanModel(model_code=self.code)
+      self.posterior = pystan.StanModel(model_code=stan_model)
 
   def sample_posterior(self, permus):
     """ Sample from the posterior distribution.
@@ -43,9 +69,17 @@ class Base:
 
 
   def get_model_data(self, permus):
+    """
+      Returns the model data.
+    """
+
     return {"data": permus}
 
   def get_samples(self, data):
+    """
+      Returns the model samples.
+    """
+
     return data['ratings']
 
   def calculate_permu_prob(self, permu, params):

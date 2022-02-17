@@ -16,6 +16,9 @@ rpy2.robjects.numpy2ri.activate()
 BayesMallows = importr('BayesMallows')
 
 class MallowsModel(Base):
+  """ The Mallows model.
+  """
+
   def __init__(self, num_samples_marginals=100, seed=1, num_samples=2000):
     Base.__init__(self, seed=seed, num_chains=1, num_samples=num_samples)
 

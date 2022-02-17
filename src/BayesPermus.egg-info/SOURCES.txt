@@ -1,7 +1,7 @@
 LICENSE
 README.md
 pyproject.toml
-setup.cfg
+setup.py
 src/BayesPermus/__init__.py
 src/BayesPermus.egg-info/PKG-INFO
 src/BayesPermus.egg-info/SOURCES.txt
