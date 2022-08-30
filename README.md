@@ -1,6 +1,6 @@
 # BayesPermus
 
-Bayesian inference of algorithm performance using permutation models.
+Bayesian inference for algorithm performance comparison using permutation models.
 
 ## Installation
 
